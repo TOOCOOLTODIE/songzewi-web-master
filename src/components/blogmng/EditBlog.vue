@@ -1,13 +1,13 @@
 <template>
-  <el-form :model="blog" :rules="rules">
+  <el-form :model="blog">
   <el-container>
     <el-header>
-      <div style="width: 800px;margin-top: 5px;margin-left: 140px">
+      <div style="margin-top: 5px;">
         <el-form-item prop="title">
-          <el-input placeholder="这里输入标题" clearable v-model="blog.title"></el-input>
+          <el-input placeholder="先说个主题吧" clearable v-model="blog.title"></el-input>
         </el-form-item>
       </div>
-      <div style="padding-top:5px;text-align:left;margin-left: 140px">
+      <div style="padding-top:5px;text-align:left;">
         <span><i class="el-icon-price-tag"></i></span>
         <el-tag
           type="info"
@@ -28,10 +28,10 @@
                   @blur="handleInputConfirm">
 
         </el-input>
-        <el-button v-else size="small" v-bind:disabled="disableInput" class="button-new-tag" @click="showInput">添加标签</el-button>
+        <el-button v-else size="small" v-bind:disabled="disableInput" class="button-new-tag" @click="showInput">关于啥的</el-button>
       </div>
     </el-header>
-    <el-main style="margin-top: 20px;margin-left: 140px">
+    <el-main style="margin-top: 60px;">
       <el-form-item prop="content">
         <editor v-model="blog.content"
                 :init="init"
@@ -42,11 +42,11 @@
 
     </el-main>
     <el-footer>
-      <el-form>
-        <el-button @click="saveOn">保存并继续添加</el-button>
+      <el-form-item>
+        <el-button type="primary" @click="saveOn">保存并继续添加</el-button>
         <el-button @click="save">保存</el-button>
         <el-button @click="cancel">取消</el-button>
-      </el-form>
+        </el-form-item>
     </el-footer>
   </el-container>
   </el-form>
@@ -73,7 +73,7 @@
       //传入一个value，使组件支持v-model绑定
       value: {
         type: String,
-        default: ''
+        default: '要说的列在这里'
       },
       disabled: {
         type: Boolean,
@@ -95,8 +95,7 @@
           language_url: '/static/tinymce/zh_CN.js',
           language: 'zh_CN',
           skin_url: '/static/tinymce/skins/lightgray',
-          height: 310,
-          width: 800,
+          height:280,
           plugins: "autoresize",
           plugins: this.plugins,
           toolbar: this.toolbar,
@@ -130,7 +129,7 @@
       },
       //可以添加一些自己的自定义事件，如清空内容
       clear() {
-        this.blog.content = ''
+
       },
       handleClose(tag) {
         //关闭标签时，便签中的元素分离掉。
@@ -144,12 +143,23 @@
         this.inputVisible = false;
         this.inputValue = '';
       },
+      saveOn(){
+        this.blog.title = '';
+        this.blog.content='';
+        this.$message({message:'保存并继续',type:'info'});
+      },
       showInput(){
         this.inputVisible = true;
         this.$nextTick(_ => {
           this.$refs.saveTagInput.$refs.input.focus();
         });
-      }
+      },
+      save(){
+        this.$message({message:'保存',type:'info'});
+      },
+      cancel(){
+        this.$message({message:'取消',type:'info'});
+      },
     },
     watch: {
       value(newValue) {

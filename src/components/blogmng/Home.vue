@@ -1,13 +1,10 @@
 <template>
   <div>
-    <child :fff="strf" style="position: fixed;z-index: 99;"></child>
-
     <el-container class="home-container">
-
       <!--布局的头-->
       <el-header style="height: 90px" class='header-container'>
         <div style="padding-top: 30px;margin-left: 50px;font-size: large;font-family: 黑体">
-          <span >还有什么要说的吗博客系统</span>
+          <span >你还有什么话对这个世界说吗</span>
         </div>
 
         <div style="float: right;margin-right: 20px;padding-buttom: 25px">
@@ -39,11 +36,11 @@
             <el-submenu index="1">
               <template slot="title">
                 <i class="el-icon-location"></i>
-                <span>博客发布</span>
+                <span>还有话说</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="1-1">编辑博客</el-menu-item>
-                <el-menu-item index="1-2">查询博客</el-menu-item>
+                <el-menu-item index="1-1">我要说</el-menu-item>
+                <el-menu-item index="1-2">我说了</el-menu-item>
               </el-menu-item-group>
               <el-menu-item-group title="分组2">
                 <el-menu-item index="1-3">选项3</el-menu-item>
@@ -55,7 +52,7 @@
             </el-submenu>
             <el-menu-item index="2">
               <i class="el-icon-menu"></i>
-              <span slot="title">导航二</span>
+              <span slot="title">没话说了</span>
             </el-menu-item>
             <el-menu-item index="3" disabled>
               <i class="el-icon-document"></i>
@@ -73,11 +70,6 @@
             <el-breadcrumb-item :to="{path:'/blogmng/home'}">首页</el-breadcrumb-item>
             <el-breadcrumb-item v-for="item in breadcrumbs" :key="item.id">{{item}}</el-breadcrumb-item>
           </el-breadcrumb>
-          <!--缓存页面，而不是销毁他们。防止重复渲染。-->
-          <!-- <keep-alive>
-             <router-view v-if="this.$router.mete.keepAlive"></router-view>
-           </keep-alive>
-           <router-view v-if="!this.$router.meta.keepAlive"></router-view>-->
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -88,7 +80,7 @@
   export default {
     data() {
       return {
-        breadcrumbs: ['博客发布'],
+        breadcrumbs: ['还有话说'],
         strf:true
       }
     },
@@ -102,19 +94,19 @@
       handleCommand(cmd) {
       },
       handleSelect(index, indexPath) {
-        this.$message({message:index,type:'info'});
+       /* this.$message({message:index,type:'info'});*/
         switch (index) {
           case '2':
             this.$router.push("/blogmng/home");
-            this.breadcrumbs = ['导航2'];
+            this.breadcrumbs = ['没话说了'];
             break;
           case '1-1':
             this.$router.push("/editBlog");
-            this.breadcrumbs = ['编辑博客'];
+            this.breadcrumbs = ['我要说'];
             break;
           case '1-2':
             this.$router.push("/staff");
-            this.breadcrumbs = ['查询博客'];
+            this.breadcrumbs = ['我说了'];
             break;
         }
 
