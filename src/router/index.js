@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
-import Staff from '@/components/staff/Staff'
 import BlogHome from '@/components/blogmng/Home'
 import EditBlog from '@/components/blogmng/EditBlog'
 import Blog from '@/components/blogmng/Blog'
@@ -23,11 +22,7 @@ export default new Router({
       name:'博客首页',
       component:BlogHome,
       children:[
-        {
-          path: '/staff',
-          name: 'Staff',
-          component: Staff
-        },
+
         {
           path:'/editBlog',
           name:'EditBlog',

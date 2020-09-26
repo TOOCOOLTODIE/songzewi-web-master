@@ -15,7 +15,7 @@
       <el-button type="primary" style="width: 100%" @click="submitClick">登录</el-button>
     </el-form-item>
   </el-form>
-    
+
   </div>
 </template>
 <script>
@@ -38,7 +38,7 @@
       submitClick(){
       var _this = this;
         this.loading = true;
-        this.postRequest('/api/login', {
+        this.postRequest('/login', {
           name: this.loginForm.username,
           password: this.loginForm.password
         }).then(resp=>{
