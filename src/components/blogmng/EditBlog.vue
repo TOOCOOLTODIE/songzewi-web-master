@@ -92,7 +92,7 @@
       return {
         //初始化配置
         init: {
-          language_url: '/static/tinymce/zh_CN.js',
+          language_url: '/static/zh_CN.js',
           language: 'zh_CN',
           skin_url: '/static/tinymce/skins/lightgray',
           height:280,

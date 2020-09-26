@@ -105,7 +105,7 @@
             this.breadcrumbs = ['我要说'];
             break;
           case '1-2':
-            this.$router.push("/staff");
+            this.$router.push("/listBlog");
             this.breadcrumbs = ['我说了'];
             break;
         }

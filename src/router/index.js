@@ -4,6 +4,7 @@ import Login from '@/components/Login'
 import BlogHome from '@/components/blogmng/Home'
 import EditBlog from '@/components/blogmng/EditBlog'
 import Blog from '@/components/blogmng/Blog'
+import ListBlog from '@/components/blogmng/ListBlog'
 
 Vue.use(Router)
 const originalPush = Router.prototype.push
@@ -29,9 +30,9 @@ export default new Router({
           component:EditBlog
         },
         {
-          path:'/blog',
-          name:'Blog',
-          component:Blog
+          path:'/listBlog',
+          name:'ListBlog',
+          component:ListBlog
         }
       ]
     }
