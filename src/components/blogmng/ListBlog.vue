@@ -205,7 +205,7 @@
         var _this = this;
         this.blog.userId = this.$store.state.user.id;
         this.blog.content=this.$refs.editor.myValue;
-        this.postRequest('/blogMng/updateBlog', this.blog).then(resp => {
+        this.postRequest('/blog/blogMng/updateBlog', this.blog).then(resp => {
           var status = resp.status;
           if (status == 200) {
             this.dialogTableVisible = false;
@@ -253,7 +253,7 @@
       },
       loadBlogs() {
         var _this = this;
-        this.getRequest("/blogMng/listBlog?page=" +
+        this.getRequest("/blog/blogMng/listBlog?page=" +
           this.currentPage + "&size=" +
           this.size + "&keywords=" +
           this.keyWords + "&userId=" +

@@ -11,11 +11,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {
-        target: 'http://127.0.0.1:8848',//设置你调用的接口域名和端口号 别忘了加http
+      '/blog': {
+        target: 'http://127.0.0.1:8082',//设置你调用的接口域名和端口号 别忘了加http
         changeOrigin: true,//如果需要跨域
         pathRewrite: {
-          '^/api':'http://127.0.0.1:8848'
+          '^/blog':'http://127.0.0.1:8082'
         }
       }
     },

@@ -19,7 +19,7 @@
     },
     methods: {
       init(){
-        this.getRequest("/blogMng/listDetail?id="+this.$route.params.id).then(resp=>{
+        this.getRequest("/blog/blogMng/listDetail?id="+this.$route.params.id).then(resp=>{
           var obj = resp.data;
           console.log("obj",obj)
           if(obj.status == 200){

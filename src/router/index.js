@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import BlogHome from '@/components/blogmng/Home'
 import EditBlog from '@/components/blogmng/EditBlog'
-import Blog from '@/components/blogmng/Blog'
+import BlogDetail from '@/components/blogmng/BlogDetail'
 import ListBlog from '@/components/blogmng/ListBlog'
 
 Vue.use(Router)
@@ -33,6 +33,12 @@ export default new Router({
           path:'/listBlog',
           name:'ListBlog',
           component:ListBlog
+        }
+        ,
+        {
+          path:'/blogDetail/:id',
+          name:'blogDetail',
+          component:BlogDetail
         }
       ]
     }
