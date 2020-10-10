@@ -44,7 +44,6 @@
     <el-footer>
       <el-form-item>
         <el-button type="primary" @click="saveOn">保存并继续添加</el-button>
-        <el-button @click="save">保存</el-button>
         <el-button @click="cancel">取消</el-button>
         </el-form-item>
     </el-footer>
@@ -55,7 +54,8 @@
 <script>
   import tinymce from 'tinymce/tinymce'
   import Editor from '@tinymce/tinymce-vue'
-  import 'tinymce/themes/modern/theme'
+  import 'tinymce/themes/silver/theme'
+  import 'tinymce/icons/default/icons.min.js';
   import 'tinymce/plugins/image'
   import 'tinymce/plugins/media'
   import 'tinymce/plugins/table'
@@ -92,9 +92,9 @@
       return {
         //初始化配置
         init: {
-          language_url: '/static/zh_CN.js',
+          language_url: '../../static/tinymce/langs/zh_CN.js',
           language: 'zh_CN',
-          skin_url: '/static/tinymce/skins/lightgray',
+          skin_url: '../../static/tinymce/skins/ui/oxide',// skin路径
           height:280,
           plugins: "autoresize",
           plugins: this.plugins,
@@ -144,18 +144,36 @@
         this.inputValue = '';
       },
       saveOn(){
-        this.blog.title = '';
-        this.blog.content='';
-        this.$message({message:'保存并继续',type:'info'});
+        if(this.blog.title == ''){
+          this.$message({message: '你要先说个主题啥的吧', type: 'warning'});
+          return;
+        }
+        if(this.blog.content == ''){
+          this.$message({message: '你要先说个内容啥的吧', type: 'warning'});
+          return;
+        }
+        var _this = this;
+        this.blog.userId = this.$store.state.user.id;
+        this.postRequest('/blog/blogMng/insertBlog', this.blog).then(resp => {
+          var status = resp.status;
+          if (status == 200) {
+            this.$message({message: '更新成功！', type: 'info'});
+            this.blog.tags = []
+            this.blog.title = '';
+            this.blog.content = '';
+          } else {
+            this.$message({message: '更新失败！', type: 'warning'});
+          }
+
+        });
+
+
       },
       showInput(){
         this.inputVisible = true;
         this.$nextTick(_ => {
           this.$refs.saveTagInput.$refs.input.focus();
         });
-      },
-      save(){
-        this.$message({message:'保存',type:'info'});
       },
       cancel(){
         this.$message({message:'取消',type:'info'});

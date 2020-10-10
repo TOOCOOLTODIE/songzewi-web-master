@@ -11,7 +11,7 @@
 <script>
   import tinymce from 'tinymce/tinymce'
   import Editor from '@tinymce/tinymce-vue'
-  import 'tinymce/themes/modern/theme'
+  import 'tinymce/themes/silver/theme'
   import 'tinymce/plugins/image'
   import 'tinymce/plugins/media'
   import 'tinymce/plugins/table'
@@ -47,14 +47,14 @@
       return {
         //初始化配置
         init: {
-          language_url: '/static/tinymce/langs/zh_CN.js',
+          language_url: '../../static/tinymce/langs/zh_CN.js',
           language: 'zh_CN',
-          skin_url: '/static/tinymce/skins/lightgray',
+          skin_url: '../../static/tinymce/skins/ui/oxide',// skin路径
           height: 300,
           plugins: this.plugins,
           toolbar: this.toolbar,
           branding: false,
-          menubar: true,
+          menubar: false,
           menu: {
             file: {title: '文件', items: 'newdocument'},
             edit: {title: '编辑', items: 'undo redo | cut copy paste pastetext | selectall'},
