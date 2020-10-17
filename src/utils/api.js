@@ -1,4 +1,5 @@
 import axios from 'axios'
+axios.defaults.baseURL = (process.env.NODE_ENV == 'development') ? '/blog' : ''
 import {Message} from 'element-ui'
 axios.interceptors.request.use(config => {
   return config;

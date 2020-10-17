@@ -47,9 +47,9 @@
       return {
         //初始化配置
         init: {
-          language_url: '../../static/tinymce/langs/zh_CN.js',
+          language_url: './static/tinymce/zh_CN.js',
           language: 'zh_CN',
-          skin_url: '../../static/tinymce/skins/ui/oxide',// skin路径
+          skin_url: './static/tinymce/skins/ui/oxide',// skin路径
           height: 300,
           plugins: this.plugins,
           toolbar: this.toolbar,

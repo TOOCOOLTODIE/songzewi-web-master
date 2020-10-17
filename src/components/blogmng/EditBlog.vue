@@ -55,7 +55,7 @@
   import tinymce from 'tinymce/tinymce'
   import Editor from '@tinymce/tinymce-vue'
   import 'tinymce/themes/silver/theme'
-  import 'tinymce/icons/default/icons.min.js';
+  import 'tinymce/icons/default/icons';
   import 'tinymce/plugins/image'
   import 'tinymce/plugins/media'
   import 'tinymce/plugins/table'
@@ -64,6 +64,7 @@
   import 'tinymce/plugins/wordcount'
   import 'tinymce/plugins/colorpicker'
   import 'tinymce/plugins/textcolor'
+
 
   export default {
     components: {
@@ -92,10 +93,10 @@
       return {
         //初始化配置
         init: {
-          language_url: '../../static/tinymce/langs/zh_CN.js',
+          language_url: './static/tinymce/zh_CN.js',
           language: 'zh_CN',
-          skin_url: '../../static/tinymce/skins/ui/oxide',// skin路径
-          height:280,
+          skin_url: './static/tinymce/skins/ui/oxide',// skin路径
+          height:300,
           plugins: "autoresize",
           plugins: this.plugins,
           toolbar: this.toolbar,
