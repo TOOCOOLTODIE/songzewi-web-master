@@ -11,11 +11,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/blog': {
-        target: 'http://127.0.0.1:8082',//设置你调用的接口域名和端口号 别忘了加http
+      '/blog/*': {
+        target: 'http://127.0.0.1:8848',//设置你调用的接口域名和端口号 别忘了加http
         changeOrigin: true,//如果需要跨域
         pathRewrite: {
-          '^/blog':'http://127.0.0.1:8082'
+          '^/blog':'http://127.0.0.1:8848'
         }
       }
     },
@@ -46,12 +46,12 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, '../blog/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, '../blog'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps
